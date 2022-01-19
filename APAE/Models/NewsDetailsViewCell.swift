@@ -147,16 +147,16 @@ static let identifier = "NewsDetailTableViewCell"
         
         newsTitleLabel.frame=CGRect(
             x: 5,
-            y: 5,
+            y: 20,
             width: contentView.frame.size.width-10,
             height: contentView.frame.size.height + 70
         )
         
         subTitleLabel.frame = CGRect(
             x: 5,
-            y: 5,
+            y: 20,
             width: contentView.frame.size.width-10,
-            height: contentView.frame.size.height+230
+            height: contentView.frame.size.height+270
         )
         
         newsImageView.frame = CGRect(
@@ -167,45 +167,45 @@ static let identifier = "NewsDetailTableViewCell"
         )
         authorLabel.frame = CGRect(
             x: contentView.frame.size.width-140,
-            y: 5,
+            y: 20,
             width: contentView.frame.size.width-70,
-            height: contentView.frame.size.height+350
+            height: contentView.frame.size.height+420
         )
         publishedAtLabel.frame = CGRect(
             x: 5,
-            y: 5,
+            y: 20,
             width: contentView.frame.size.width-70,
-            height: contentView.frame.size.height+350
+            height: contentView.frame.size.height+420
         )
         buttonField.frame = CGRect(
             x: contentView.frame.size.width/2.8,
-            y: 862,
+            y: 932,
             width: 100,
             height: 35
         )
         textField.frame = CGRect(
             x: 5,
-            y: 700,
+            y: 760,
             width: contentView.frame.size.width-10,
-            height: 50
+            height: 60
         )
         commentField.frame = CGRect(
             x: 5,
-            y: 757,
+            y: 827,
             width: contentView.frame.size.width-10,
             height: 100
         )
         likeField.frame = CGRect(
             x: contentView.frame.size.width/2,
-            y: 940,
+            y: 970,
             width: 50,
-            height: 35
+            height: 55
         )
         likeButton.frame = CGRect(
-            x: contentView.frame.size.width/2,
-            y: 900,
+            x: contentView.frame.size.width-65,
+            y: 718,
             width: 50,
-            height: 35
+            height: 30
         )
 
         

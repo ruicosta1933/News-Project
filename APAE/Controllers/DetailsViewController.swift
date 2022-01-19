@@ -74,11 +74,7 @@ static let identifier = "DetailsViewController"
         
                 db.collection("likes").document(docId).setData([
                     "no_likes": FieldValue.increment(Int64(1))
-                ], merge: true) { err in
-                    if let err = err {
-                        print("Error writing document: (err)")
-                    }
-                }
+                ], merge: true)
         
         
     }
@@ -95,16 +91,11 @@ static let identifier = "DetailsViewController"
         let nome = cell.textField.text
         
         let comment = cell.commentField.text
-        print(comment)
         
         db.collection("comments").document(docId).collection("comment").addDocument(data: [
             "nome": nome,
             "comentario": comment
-        ]) { err in
-            if let err = err {
-                print("Error writing document: (err)")
-            }
-        }
+        ])
     
         
         

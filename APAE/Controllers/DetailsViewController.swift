@@ -88,12 +88,10 @@ static let identifier = "DetailsViewController"
             fatalError()
         }
         
-        let nome = cell.textField.text
         
         let comment = cell.commentField.text
         
         db.collection("comments").document(docId).collection("comment").addDocument(data: [
-            "nome": nome,
             "comentario": comment
         ])
     

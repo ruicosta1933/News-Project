@@ -7,7 +7,7 @@
 		<key>APAE.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<key>Promises (Playground) 1.xcscheme</key>
 		<dict>
@@ -29,6 +29,24 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>B207E6E42770CEE5007C1870</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B207E6FA2770CEE7007C1870</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B207E7042770CEE8007C1870</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

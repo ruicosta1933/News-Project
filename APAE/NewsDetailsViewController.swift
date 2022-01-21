@@ -67,8 +67,13 @@ static let identifier = "NewsDetailsViewController"
         dateLabel.text = article?.publishedAt
         authorLabel.text = article?.newsSite
         likeButton.addTarget(self, action: #selector(pressed), for: .touchUpInside)
-        
-        
+        commentField.layer.borderColor = UIColor.systemBlue.cgColor
+        commentField.layer.borderWidth = 1
+        commentField.layer.cornerRadius = 5
+        commentButton.layer.borderWidth = 1
+        commentButton.layer.cornerRadius = 5
+        commentButton.layer.borderColor = UIColor.systemBlue.cgColor
+        commentButton.addTarget(self, action: #selector(commented), for: .touchUpInside)
         
         view.backgroundColor = .systemBackground
         
@@ -77,6 +82,20 @@ static let identifier = "NewsDetailsViewController"
     }
     
 
+    @objc func commented() {
+        let docId = String(article!.id)
+        
+        let comment = commentField.text
+        
+        db.collection("comments").addDocument(data: [
+            "newsId" : docId,
+            "comentario": comment,
+            "timestamps": FieldValue.serverTimestamp()
+        ])
+        
+        
+        
+    }
     
     @objc func pressed() {
         

@@ -44,6 +44,9 @@ static let identifier = "NewsDetailsViewController"
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        let button = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(openQRPage))
+        navigationItem.rightBarButtonItem = button
+        
         title = "Detail"
         imageView.layer.cornerRadius = 6
         imageView.layer.masksToBounds = true
@@ -84,17 +87,21 @@ static let identifier = "NewsDetailsViewController"
    
 
     @objc func commented() {
-      let docId = String(article!.id)
-        
-        let comment = commentField.text
-        
-        db.collection("comments").addDocument(data: [
-            "newsId" : docId,
-            "comentario": comment,
-            "timestamps": FieldValue.serverTimestamp()
-        ])
+     
     }
     
+    @objc func openQRPage() {
+     
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "QRController") as? QRController
+               else {
+                   return
+               }
+               
+               vc.articleURL = article?.url ?? ""
+               
+               navigationController?.present(vc, animated: true)
+        
+    }
     
     @objc func pressed() {
         

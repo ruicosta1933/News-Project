@@ -436,6 +436,55 @@
             </objects>
             <point key="canvasLocation" x="3291.304347826087" y="-687.05357142857144"/>
         </scene>
+        <!--Controller-->
+        <scene sceneID="VZ6-HS-lQj">
+            <objects>
+                <viewController storyboardIdentifier="QRController" id="R3l-cE-CaU" customClass="QRController" customModule="APAE" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RG0-YL-seB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7X5-02-p2Y">
+                                <rect key="frame" x="0.0" y="496" width="414" height="400"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U9h-gq-KNC">
+                                        <rect key="frame" x="60" y="100" width="294" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="gyP-2b-yGA"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="U9h-gq-KNC" firstAttribute="centerY" secondItem="7X5-02-p2Y" secondAttribute="centerY" id="NmR-PQ-9Iy"/>
+                                    <constraint firstAttribute="height" constant="400" id="Tpa-NN-83v"/>
+                                    <constraint firstItem="U9h-gq-KNC" firstAttribute="leading" secondItem="7X5-02-p2Y" secondAttribute="leading" constant="60" id="cjD-KU-rzt"/>
+                                    <constraint firstItem="U9h-gq-KNC" firstAttribute="centerX" secondItem="7X5-02-p2Y" secondAttribute="centerX" id="gG2-Vb-UaW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
+                        <constraints>
+                            <constraint firstItem="7X5-02-p2Y" firstAttribute="leading" secondItem="RG0-YL-seB" secondAttribute="leadingMargin" constant="-20" id="GP0-O7-rw2"/>
+                            <constraint firstItem="7X5-02-p2Y" firstAttribute="height" secondItem="RG0-YL-seB" secondAttribute="height" multiplier="0.446429" id="JKE-sh-Jx9"/>
+                            <constraint firstItem="7X5-02-p2Y" firstAttribute="bottom" secondItem="RG0-YL-seB" secondAttribute="bottomMargin" id="JdP-yg-RJC"/>
+                            <constraint firstItem="7X5-02-p2Y" firstAttribute="centerX" secondItem="RG0-YL-seB" secondAttribute="centerX" id="bT5-Bc-Q4Z"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="qrImage" destination="U9h-gq-KNC" id="YmW-N0-aHf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BYa-tX-zpM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4246.376811594203" y="-142.63392857142856"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="9jo-sC-2Y4">
             <objects>

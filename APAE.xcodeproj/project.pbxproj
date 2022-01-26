@@ -29,6 +29,7 @@
 		B276554D278E1186001EBEF9 /* NewsDetailsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B276554C278E1186001EBEF9 /* NewsDetailsViewCell.swift */; };
 		B2767955278377A700E05DBF /* UINews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2767954278377A700E05DBF /* UINews.swift */; };
 		B29041BD27A1AADC00EF465A /* CacheController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29041BC27A1AADC00EF465A /* CacheController.swift */; };
+		B29041BF27A1EF7800EF465A /* QRController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29041BE27A1EF7800EF465A /* QRController.swift */; };
 		B2D1D91B27710AAB00695579 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D1D91A27710AAB00695579 /* NewsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		B276554C278E1186001EBEF9 /* NewsDetailsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewCell.swift; sourceTree = "<group>"; };
 		B2767954278377A700E05DBF /* UINews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINews.swift; sourceTree = "<group>"; };
 		B29041BC27A1AADC00EF465A /* CacheController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheController.swift; sourceTree = "<group>"; };
+		B29041BE27A1EF7800EF465A /* QRController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRController.swift; sourceTree = "<group>"; };
 		B2D1D91A27710AAB00695579 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +144,7 @@
 				B2481B32279B04B800397544 /* modalController.swift */,
 				B2481B34279B4B0700397544 /* modalCell.swift */,
 				B29041BC27A1AADC00EF465A /* CacheController.swift */,
+				B29041BE27A1EF7800EF465A /* QRController.swift */,
 			);
 			path = APAE;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			files = (
 				B23F09342798798A00FF4810 /* NewsDetailsViewController.swift in Sources */,
 				B207E6ED2770CEE5007C1870 /* ViewController.swift in Sources */,
+				B29041BF27A1EF7800EF465A /* QRController.swift in Sources */,
 				B2481B33279B04B800397544 /* modalController.swift in Sources */,
 				B248A718278F34510030DAB3 /* BlogTableViewCell.swift in Sources */,
 				B207E6E92770CEE5007C1870 /* AppDelegate.swift in Sources */,

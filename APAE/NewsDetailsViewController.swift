@@ -12,7 +12,7 @@ import Firebase
 class NewsDetailsViewController: UIViewController{
     
     
-    
+    public static let shared = NewsDetailsViewController()
     
     
     
@@ -28,6 +28,7 @@ static let identifier = "NewsDetailsViewController"
     
     @IBOutlet var subTitleLabel: UILabel!
     
+    @IBOutlet var showComments: UIButton!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
     @IBOutlet var commentsLabel: UILabel!
@@ -38,9 +39,10 @@ static let identifier = "NewsDetailsViewController"
     
     private let db = Firestore.firestore()
     
-
+    
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         title = "Detail"
         imageView.layer.cornerRadius = 6
@@ -60,7 +62,6 @@ static let identifier = "NewsDetailsViewController"
 //                let source = document.metadata.hasPendingWrites ? "Local" : "Server"
                 self.likesCount.text = String(describing: document.get("no_likes") ?? "0")
             }
-        
         imageView.image = UIImage(data: image!)
         titleLabel.text = article?.title
         subTitleLabel.text = article?.summary
@@ -80,10 +81,10 @@ static let identifier = "NewsDetailsViewController"
         
         
     }
-    
+   
 
     @objc func commented() {
-        let docId = String(article!.id)
+      let docId = String(article!.id)
         
         let comment = commentField.text
         
@@ -92,10 +93,8 @@ static let identifier = "NewsDetailsViewController"
             "comentario": comment,
             "timestamps": FieldValue.serverTimestamp()
         ])
-        
-        
-        
     }
+    
     
     @objc func pressed() {
         

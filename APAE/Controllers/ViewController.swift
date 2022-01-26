@@ -32,10 +32,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         view.backgroundColor = .systemBackground
         
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
         
-        APICaller.shared.getTopNews { [weak self] result in
-                   switch result {
-                   case .success(let articles):
+        CacheController.shared.getArticlesByCache{ [weak self] articles in
                        self?.articles = articles
                        self?.viewModels = articles.compactMap({
                            NewsTableViewCellViewModel(
@@ -45,21 +45,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                             newsSite: $0.newsSite ?? "Sem autor",
                             publishedAt: $0.publishedAt ?? ""
                            )
-                        
                        })
                        DispatchQueue.main.async {
                            self?.tableView.reloadData()
                        }
-                   case .failure(let error):
-                       print(error)
-                   }
                }
         // Do any additional setup after loading the view.
-        
         createSearchBar()
-        
     }
     
+    @objc func handleRefreshControl(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) {
+            CacheController.shared.getArticlesByCache { [weak self] articles in
+                self?.articles = articles
+                self?.viewModels = articles.compactMap({
+                    NewsTableViewCellViewModel(
+                    id: $0.id,
+                    title: $0.title,
+                    imageURL: URL(string: $0.imageUrl ?? ""),
+                    newsSite: $0.newsSite ?? "Sem autor",
+                    publishedAt: $0.publishedAt ?? ""
+                   )
+                })
+
+                DispatchQueue.main.async {
+                   self?.tableView.reloadData()
+                }
+           }
+
+            self.tableView.refreshControl?.endRefreshing()
+        }
     
     private func createSearchBar(){
         navigationItem.searchController = searchVC
@@ -69,11 +83,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame =  view.bounds
-        
-        
     }
-    
-    
     //Table
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,7 +101,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.configure(with: viewModels[indexPath.row])
         return cell
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

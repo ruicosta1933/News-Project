@@ -13,27 +13,24 @@ final class APICaller {
     
     private init() {}
     
-    public func getTopNews(completion: @escaping (Result<[Article], Error>) -> Void) {
+    public func getTopNews(completion: @escaping (_ article: [Article]) -> ()) {
         
         guard let url = Constants.toHeadlinesURL else {
             return
         }
         
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
-            if let error = error {
-                completion(.failure(error))
-            }
-            else if let data = data {
+            if let data = data {
                 
                 do {
-                    
                     let result = try JSONDecoder().decode([Article].self, from: data)
-                    
                    
-                    completion(.success(result))
+                    DispatchQueue.main.async{
+                        completion(result)
+                    }
                 }
                 catch {
-                    completion(.failure(error))
+                    print("Error catching data from API")
                 }
             }
         }
@@ -67,13 +64,10 @@ final class APICaller {
         task.resume()
     }
     
-    
     public func search(with query: String, completion: @escaping (Result<[Article], Error>) -> Void) {
         guard !query.trimmingCharacters(in: .whitespaces).isEmpty else {
             return 
         }
-        
-        
         
         let urlString = Constants.searchUrlString + query
         guard let url = URL(string: urlString) else {
@@ -98,7 +92,6 @@ final class APICaller {
         task.resume()
     }
     
-    
 }
 
 // Modules
@@ -115,6 +108,5 @@ struct Article: Codable {
     let newsSite: String?
     let summary: String?
     let publishedAt: String?
-   
 }
 

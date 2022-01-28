@@ -346,15 +346,24 @@
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Ver Comentários"/>
                                                         <connections>
-                                                            <segue destination="wB1-hx-lEk" kind="popoverPresentation" popoverAnchorView="uud-Yk-lAu" id="tx7-jh-t4j">
-                                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                            </segue>
+                                                            <action selector="showComments:" destination="rgy-Ve-v38" eventType="touchUpInside" id="Eit-pW-soL"/>
+                                                            <action selector="showComments:" destination="bPA-Q5-vXQ" eventType="touchUpInside" id="j6f-z3-7DC"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xN6-es-3yq">
                                                         <rect key="frame" x="202" y="0.0" width="202" height="31"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Comentar"/>
+                                                        <buttonConfiguration key="configuration" style="filled" title="Comentar">
+                                                            <color key="baseBackgroundColor" systemColor="linkColor"/>
+                                                        </buttonConfiguration>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="button.layer.cornerRadius">
+                                                                <integer key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="comment:" destination="rgy-Ve-v38" eventType="touchUpInside" id="isl-jH-mGE"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -420,7 +429,7 @@
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="authorLabel" destination="oz6-mT-C6Y" id="ROc-Kt-U5w"/>
-                        <outlet property="commentButton" destination="xN6-es-3yq" id="a0U-g4-Y1N"/>
+                        <outlet property="commentButton" destination="xN6-es-3yq" id="JHn-ZF-7mt"/>
                         <outlet property="commentField" destination="KmD-S1-zeM" id="mpf-oc-DVR"/>
                         <outlet property="commentsLabel" destination="9R2-Hv-vHD" id="Bm8-xW-z5B"/>
                         <outlet property="dateLabel" destination="h8z-rp-7eI" id="Exy-tK-gqL"/>
@@ -433,8 +442,49 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5aT-ph-mLz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="bPA-Q5-vXQ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3291.304347826087" y="-687.05357142857144"/>
+        </scene>
+        <!--Modal Controller-->
+        <scene sceneID="ea0-kq-Tc6">
+            <objects>
+                <tableViewController storyboardIdentifier="modalController" id="3zC-OG-S5V" customClass="modalController" customModule="APAE" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="GVc-dL-ErM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="105" id="mRx-b7-vIX">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="105"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mRx-b7-vIX" id="Ibr-6U-cyx">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8o5-Lm-aF2">
+                                            <rect key="frame" x="30" y="40.5" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3zC-OG-S5V" id="pXm-eB-2u6"/>
+                            <outlet property="delegate" destination="3zC-OG-S5V" id="yV4-DS-RNi"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="GVc-dL-ErM" id="Zfa-SO-JTq"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PkN-m0-mL0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4243.4782608695659" y="-803.57142857142856"/>
         </scene>
         <!--Controller-->
         <scene sceneID="VZ6-HS-lQj">
@@ -467,7 +517,16 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="58V-gA-dCy">
+                                <rect key="frame" x="-54" y="182" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="58V-gA-dCy" id="BVr-0U-gHc">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="IRY-Cf-f0p"/>
                         <rect key="contentStretch" x="0.0" y="1" width="1" height="1"/>
                         <constraints>
                             <constraint firstItem="7X5-02-p2Y" firstAttribute="leading" secondItem="RG0-YL-seB" secondAttribute="leadingMargin" constant="-20" id="GP0-O7-rw2"/>
@@ -484,30 +543,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BYa-tX-zpM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4246.376811594203" y="-142.63392857142856"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="9jo-sC-2Y4">
-            <objects>
-                <viewController id="wB1-hx-lEk" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="iYo-DA-bRf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TESTE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMh-7f-UXA">
-                                <rect key="frame" x="186" y="274" width="51" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="oKW-jM-L6j"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NeH-6M-PgT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4489" y="-964"/>
         </scene>
     </scenes>
     <resources>

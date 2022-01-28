@@ -8,50 +8,54 @@ import UIKit
 import Foundation
 import Firebase
 
-class modalController: UIViewController {
+class modalController: UIViewController, UITableViewDataSource {
     
+    var tableViewData: [String] = []
     static let identifier = "modalController"
-    var docId : String?
-    private let db = Firestore.firestore()
+    var ref: DocumentReference? = nil
+    let db = Firestore.firestore()
+    var docId: String!
     
-    @IBOutlet var comment: UILabel!
-    @IBOutlet var name: UILabel!
-    @IBOutlet var date: UILabel!
+    @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("12")
-      /*  db.collection("comments").whereField("newsId", isEqualTo: "13669").getDocuments(){
-            (querySnapshot, err) in
+    
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
+            
+            db.collection("comments").document(docId).collection("comment").getDocuments() {
+                (querySnapshot, err) in
                     if let err = err {
-                        print("Error getting documents: \(err)")
+                        print("Error getting documents: (err)")
                     } else {
                         for document in querySnapshot!.documents {
-                                print("\(document.documentID) => \(document.data()) ====", document.get("comentario") as! String)
+                            var teste = String(describing: document.get("comment")!)
+                            print(teste)
+                            self.tableViewData.append(teste)
+                            print(self.tableViewData)
+                            
+                    }
+                                
+                        DispatchQueue.main.async {
+                           self.tableView.reloadData()
+                            
                         }
-        }
-            */
-          /* .addSnapshotListener { documentSnapshot, error in
-                guard let document = documentSnapshot?.documents else {
-                    print("Error fetching document: \(error!)")
-                    return
-                }
-                document.compactMap({
-                 */
-                 /*
-                    document in
-                    let id = document.get("newsId") as? String
-                    if  id == "13669" {
-                        self.commentLabel.text = document.get("comentario") as? String
-                       print(document.get("comentario") as! String)
-                    })
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                */
-    //                let source = document.metadata.hasPendingWrites ? "Local" : "Server"
-      //          self.commentLabel.text = String(describing: document.get("commentario") ?? "Sem comentario")
+                    }
             }
+            
+            tableView.dataSource = self
+        }
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return self.tableViewData.count
+        }
+
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath)
+            
+            cell.textLabel?.text = self.tableViewData[indexPath.row]
+            return cell
+        }
     }
 
     

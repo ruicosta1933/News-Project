@@ -11,10 +11,7 @@ import Firebase
 
 class NewsDetailsViewController: UIViewController{
     
-    
     public static let shared = NewsDetailsViewController()
-    
-    
     
 static let identifier = "NewsDetailsViewController"
     
@@ -28,6 +25,7 @@ static let identifier = "NewsDetailsViewController"
     
     @IBOutlet var subTitleLabel: UILabel!
     
+    
     @IBOutlet var showComments: UIButton!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
@@ -35,24 +33,36 @@ static let identifier = "NewsDetailsViewController"
     @IBOutlet var likesCount: UILabel!
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var commentField: UITextView!
+    
     @IBOutlet var commentButton: UIButton!
     
     private let db = Firestore.firestore()
     
-    
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
         let button = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(openQRPage))
         navigationItem.rightBarButtonItem = button
         
         title = "Detail"
+        titleLabel.text = article?.title
+        subTitleLabel.text = article?.summary
+        dateLabel.text = article?.publishedAt
+        authorLabel.text = article?.newsSite
+        likeButton.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+        
         imageView.layer.cornerRadius = 6
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
         imageView.backgroundColor = .secondarySystemBackground
         imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(data: image!)
+    
+        commentField.layer.borderColor = UIColor.systemBlue.cgColor
+        commentField.layer.borderWidth = 1
+        commentField.layer.cornerRadius = 5
+        
         
         let docId = String(article!.id)
         
@@ -65,30 +75,14 @@ static let identifier = "NewsDetailsViewController"
 //                let source = document.metadata.hasPendingWrites ? "Local" : "Server"
                 self.likesCount.text = String(describing: document.get("no_likes") ?? "0")
             }
-        imageView.image = UIImage(data: image!)
-        titleLabel.text = article?.title
-        subTitleLabel.text = article?.summary
-        dateLabel.text = article?.publishedAt
-        authorLabel.text = article?.newsSite
-        likeButton.addTarget(self, action: #selector(pressed), for: .touchUpInside)
-        commentField.layer.borderColor = UIColor.systemBlue.cgColor
-        commentField.layer.borderWidth = 1
-        commentField.layer.cornerRadius = 5
-        commentButton.layer.borderWidth = 1
-        commentButton.layer.cornerRadius = 5
-        commentButton.layer.borderColor = UIColor.systemBlue.cgColor
-        commentButton.addTarget(self, action: #selector(commented), for: .touchUpInside)
+      
         
         view.backgroundColor = .systemBackground
-        
-        
         
     }
    
 
-    @objc func commented() {
-     
-    }
+   
     
     @objc func openQRPage() {
      
@@ -125,7 +119,25 @@ static let identifier = "NewsDetailsViewController"
         
         
     }
-    
+    @IBAction func showComments(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "modalController") as? modalController
+               else {
+                   return
+               }
+               
+                vc.docId = String(article!.id)
+               
+               navigationController?.present(vc, animated: true)
+    }
+    @IBAction func comment(_ sender: Any) {
+        let docId = String(article!.id)
+                
+        db.collection("comments").document(docId).collection("comment").addDocument(data: [
+                    "comment": commentField.text,
+                    "id": 123,
+                    "timestamp": FieldValue.serverTimestamp()
+                ])
+    }
    
 }
 

@@ -30,6 +30,7 @@ static let identifier = "DetailsViewController"
     
 
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,9 +95,6 @@ static let identifier = "DetailsViewController"
         db.collection("comments").document(docId).collection("comment").addDocument(data: [
             "comentario": comment
         ])
-    
-        
-        
         
     }
     override func viewDidLayoutSubviews() {

@@ -31,6 +31,9 @@ class modalController: UIViewController, UITableViewDataSource {
                         for document in querySnapshot!.documents {
                             var teste = String(describing: document.get("comment")!)
                             print(teste)
+                            
+                        
+                            
                             self.tableViewData.append(teste)
                             print(self.tableViewData)
                             

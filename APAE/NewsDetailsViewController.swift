@@ -131,12 +131,17 @@ static let identifier = "NewsDetailsViewController"
     }
     @IBAction func comment(_ sender: Any) {
         let docId = String(article!.id)
-                
+        let user = Auth.auth().currentUser
+        
         db.collection("comments").document(docId).collection("comment").addDocument(data: [
                     "comment": commentField.text,
-                    "id": 123,
+                    "user":user?.uid,
                     "timestamp": FieldValue.serverTimestamp()
                 ])
+        let alerta = UIAlertController(title: "Sucesso", message: "O seu comentário foi enviado com sucesso", preferredStyle: .alert)
+        alerta.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alerta, animated: true, completion: nil)
+        
     }
    
 }

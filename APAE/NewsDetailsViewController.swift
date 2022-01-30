@@ -112,13 +112,12 @@ static let identifier = "NewsDetailsViewController"
         
         let docId = String(article!.id)
         
-        
                 db.collection("likes").document(docId).setData([
                     "no_likes": FieldValue.increment(Int64(1))
                 ], merge: true)
-        
-        
+    
     }
+    
     @IBAction func showComments(_ sender: Any) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "modalController") as? modalController
                else {

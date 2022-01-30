@@ -21,33 +21,32 @@ class modalController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
-            
-            db.collection("comments").document(docId).collection("comment").getDocuments() {
-                (querySnapshot, err) in
-                    if let err = err {
-                        print("Error getting documents: (err)")
-                    } else {
-                        for document in querySnapshot!.documents {
-                            var teste = String(describing: document.get("comment")!)
-                            print(teste)
-                            
-                        
-                            
-                            self.tableViewData.append(teste)
-                            print(self.tableViewData)
-                            
-                    }
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableViewCell")
+                
+                db.collection("comments").document(docId).collection("comment").getDocuments() {
+                    (querySnapshot, err) in
+                        if let err = err {
+                            print("Error getting documents: (err)")
+                        } else {
+                            for document in querySnapshot!.documents {
+                                var teste = String(describing: document.get("comment")!)
+                                print(teste)
                                 
-                        DispatchQueue.main.async {
-                           self.tableView.reloadData()
-                            
+                                
+                                self.tableViewData.append(teste)
+                                print(self.tableViewData)
+                                
                         }
-                    }
+                                    
+                            DispatchQueue.main.async {
+                               self.tableView.reloadData()
+                                
+                            }
+                        }
+                }
+                
+                tableView.dataSource = self
             }
-            
-            tableView.dataSource = self
-        }
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return self.tableViewData.count

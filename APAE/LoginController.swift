@@ -38,12 +38,14 @@ class LoginController : UIViewController{
             } else{
                 let errCode = AuthErrorCode(rawValue: error!._code)
                 switch errCode {
-                    
                 case .invalidEmail:
-                    let alerta = UIAlertController(title: "Email Invalido", message: "O email usado não existe", preferredStyle: .alert)
+                    let alerta = UIAlertController(title: "Email Invalido", message: "O email é invalido", preferredStyle: .alert)
                     alerta.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
                     self?.present(alerta, animated: true, completion: nil)
-                    
+                case .missingEmail:
+                    let alerta = UIAlertController(title: "Email Invalido", message: "O email não existe", preferredStyle: .alert)
+                    alerta.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                    self?.present(alerta, animated: true, completion: nil)
                 case .wrongPassword:
                     let alerta = UIAlertController(title: "Password Incorreta", message: "Password inserida encontra-se errada", preferredStyle: .alert)
                     alerta.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))

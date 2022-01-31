@@ -15,7 +15,7 @@ class RegisterController : UIViewController {
     @IBOutlet var name: UITextField!
     @IBOutlet var email: UITextField!
     @IBOutlet var password: UITextField!
-    
+    private let db = Firestore.firestore()
    
     @IBOutlet var goToLogin: UIButton!
     
@@ -25,20 +25,26 @@ class RegisterController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     @IBAction func registerAccount(_ sender: Any) {
         Auth.auth().createUser(withEmail: email.text!, password: password.text!) { authResult, error in
+           
+            
+            
             if (error?._code == nil) {
-                
+                let change = Auth.auth().currentUser?.createProfileChangeRequest()
+                change?.displayName = self.userName.text
+                change?.commitChanges { error in
+                    print("algo errado")
+                }
                 let user = Auth.auth().currentUser
                 
                 guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabController") as? tabController
                        else {
                            return
                        }
-                
-                self.show(vc, sender: true)
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true)
             } else{
                 let errCode = AuthErrorCode(rawValue: error!._code)
                 switch errCode {

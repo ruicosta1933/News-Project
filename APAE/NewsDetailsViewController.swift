@@ -37,7 +37,7 @@ static let identifier = "NewsDetailsViewController"
     @IBOutlet var commentButton: UIButton!
     
     private let db = Firestore.firestore()
-    
+    var isFavourite : Bool = false
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -63,7 +63,7 @@ static let identifier = "NewsDetailsViewController"
         commentField.layer.borderWidth = 1
         commentField.layer.cornerRadius = 5
         
-        
+        let uId = Auth.auth().currentUser!.uid
         let docId = String(article!.id)
         
         db.collection("likes").document(docId)
@@ -75,7 +75,27 @@ static let identifier = "NewsDetailsViewController"
 //                let source = document.metadata.hasPendingWrites ? "Local" : "Server"
                 self.likesCount.text = String(describing: document.get("no_likes") ?? "0")
             }
-      
+        
+        
+        
+        db.collection("likedByUser").document(String(describing: uId)).collection("news").document(docId)
+                    .addSnapshotListener { documentSnapshot, error in
+                    guard let document = documentSnapshot else {
+                        print("Error fetching document: (error!)")
+                        return
+                    }
+
+                    if document.get("isFavourite") != nil {
+                        self.isFavourite = document.get("isFavourite") as! Bool
+                    }
+                }
+        
+        if(isFavourite == false){
+            self.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+        else{
+            self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }
         
         view.backgroundColor = .systemBackground
         
@@ -85,8 +105,21 @@ static let identifier = "NewsDetailsViewController"
    
     
     @objc func openQRPage() {
+        
+        guard let image = UIImage(data: image!), let url = URL(string: (article?.url)!) else {
+                    return
+                }
+                let shareSheetvc = UIActivityViewController(
+                    activityItems: [
+                        image,
+                        url
+                    ],
+                    applicationActivities: nil
+                )
+        
+                present(shareSheetvc, animated: true)
      
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "QRController") as? QRController
+      /*  guard let vc = storyboard?.instantiateViewController(withIdentifier: "QRController") as? QRController
                else {
                    return
                }
@@ -94,10 +127,49 @@ static let identifier = "NewsDetailsViewController"
                vc.articleURL = article?.url ?? ""
                
                navigationController?.present(vc, animated: true)
-        
+        */
     }
     
     @objc func pressed() {
+        
+        
+        
+        
+        let docId = String(article!.id)
+                let userId = Auth.auth().currentUser?.uid
+                
+        
+                if isFavourite == true {
+                    db.collection("likedByUser").document(String(describing: userId!)).collection("news").document(docId).setData([
+                        "isFavourite": false,
+                    ], merge: true)
+                    
+                    db.collection("likes").document(docId).setData([
+                        "no_likes": FieldValue.increment(Int64(-1))
+                    ], merge: true) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        }
+                    }
+                } else if isFavourite == false{
+                    
+                    
+                    
+                    
+                    db.collection("likedByUser").document(String(describing: userId!)).collection("news").document(docId).setData([
+                        "isFavourite": true,
+                    ], merge: true)
+                    
+                    db.collection("likes").document(docId).setData([
+                        "no_likes": FieldValue.increment(Int64(1))
+                    ], merge: true) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        }
+                    }
+                }
+        
+        
         
         UIView.animate(withDuration: 0.4,
             animations: {
@@ -105,16 +177,17 @@ static let identifier = "NewsDetailsViewController"
             },
             completion: { _ in
                 UIView.animate(withDuration: 0.4) {
-                    self.likeButton.transform = CGAffineTransform.identity
-                    self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    if(self.isFavourite == false){
+                        self.likeButton.transform = CGAffineTransform.identity
+                        self.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                    }
+                    else{
+                        self.likeButton.transform = CGAffineTransform.identity
+                        self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                    }
                 }
             })
         
-        let docId = String(article!.id)
-        
-                db.collection("likes").document(docId).setData([
-                    "no_likes": FieldValue.increment(Int64(1))
-                ], merge: true)
     
     }
     
@@ -134,7 +207,7 @@ static let identifier = "NewsDetailsViewController"
         
         db.collection("comments").document(docId).collection("comment").addDocument(data: [
                     "comment": commentField.text,
-                    "user":user?.uid,
+                    "user": user?.displayName,
                     "timestamp": FieldValue.serverTimestamp()
                 ])
         let alerta = UIAlertController(title: "Sucesso", message: "O seu comentário foi enviado com sucesso", preferredStyle: .alert)

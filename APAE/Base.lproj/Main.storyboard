@@ -501,7 +501,8 @@
                         <segue destination="Yej-iF-hX6" kind="relationship" relationship="viewControllers" id="l5v-mk-160"/>
                         <segue destination="iwl-Oj-X7R" kind="relationship" relationship="viewControllers" id="kdo-xv-FNc"/>
                         <segue destination="KWK-dd-kfV" kind="relationship" relationship="viewControllers" id="UON-VZ-m21"/>
-                        <segue destination="gP2-eH-d8w" kind="relationship" relationship="viewControllers" id="Oxb-2w-8UE"/>
+                        <segue destination="aff-sR-b6k" kind="relationship" relationship="viewControllers" id="8mZ-zc-jyU"/>
+                        <segue destination="gP2-eH-d8w" kind="relationship" relationship="viewControllers" id="MmQ-sh-ypY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsF-Pk-5kN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -549,6 +550,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tzy-tr-FUA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-715" y="851"/>
+        </scene>
+        <!--Favoritos-->
+        <scene sceneID="wgb-Bk-mjW">
+            <objects>
+                <viewController id="aff-sR-b6k" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r9P-vg-tKl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="zDE-dz-7hO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Favoritos" selectedImage="heart" catalog="system" id="Id8-L2-o2E"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9TR-09-WqC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="19" y="1509"/>
         </scene>
         <!--Blog APAE-->
         <scene sceneID="McO-k1-Ehh">
@@ -618,7 +635,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Dl-Mk-urD">
-                                                <rect key="frame" x="5" y="379" width="404" height="20.5"/>
+                                                <rect key="frame" x="5" y="389" width="404" height="20.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8z-rp-7eI">
                                                         <rect key="frame" x="0.0" y="0.0" width="36" height="20.5"/>
@@ -635,7 +652,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hpb-vP-bBb">
-                                                <rect key="frame" x="5" y="424.5" width="404" height="1"/>
+                                                <rect key="frame" x="5" y="434.5" width="404" height="1"/>
                                                 <color key="backgroundColor" systemColor="linkColor"/>
                                                 <color key="tintColor" systemColor="linkColor"/>
                                                 <constraints>
@@ -643,7 +660,7 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ilo-qQ-kZ1">
-                                                <rect key="frame" x="5" y="435.5" width="404" height="31"/>
+                                                <rect key="frame" x="5" y="445.5" width="404" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Comentários" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9R2-Hv-vHD">
                                                         <rect key="frame" x="0.0" y="0.0" width="348" height="31"/>
@@ -665,7 +682,7 @@
                                                 </subviews>
                                             </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" text="Escreva aqui !" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KmD-S1-zeM">
-                                                <rect key="frame" x="5" y="476.5" width="404" height="100"/>
+                                                <rect key="frame" x="5" y="486.5" width="404" height="100"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="MKR-dz-6fA"/>
@@ -675,7 +692,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Pk-kA-Llu">
-                                                <rect key="frame" x="5" y="586.5" width="404" height="31"/>
+                                                <rect key="frame" x="5" y="596.5" width="404" height="31"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uud-Yk-lAu">
                                                         <rect key="frame" x="0.0" y="0.0" width="202" height="31"/>
@@ -721,7 +738,7 @@
                                             <constraint firstAttribute="trailing" secondItem="Rue-R9-eFi" secondAttribute="trailing" constant="5" id="OSr-4e-kKL"/>
                                             <constraint firstAttribute="trailing" secondItem="Hpb-vP-bBb" secondAttribute="trailing" constant="5" id="Rxj-uI-LjN"/>
                                             <constraint firstItem="boO-BD-mcA" firstAttribute="top" secondItem="RuK-eT-a4k" secondAttribute="bottom" constant="10" id="SW8-wN-7iP"/>
-                                            <constraint firstItem="7Dl-Mk-urD" firstAttribute="top" secondItem="Rue-R9-eFi" secondAttribute="bottom" constant="10" id="Wcs-Be-hVX"/>
+                                            <constraint firstItem="7Dl-Mk-urD" firstAttribute="top" secondItem="Rue-R9-eFi" secondAttribute="bottom" constant="20" id="Wcs-Be-hVX"/>
                                             <constraint firstAttribute="trailing" secondItem="ilo-qQ-kZ1" secondAttribute="trailing" constant="5" id="cIR-M7-08J"/>
                                             <constraint firstAttribute="trailing" secondItem="boO-BD-mcA" secondAttribute="trailing" constant="5" id="cmu-V1-w1u"/>
                                             <constraint firstItem="RuK-eT-a4k" firstAttribute="top" secondItem="8yK-jH-dat" secondAttribute="top" constant="10" id="fId-Hy-HKw"/>

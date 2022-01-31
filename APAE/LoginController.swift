@@ -17,12 +17,7 @@ class LoginController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-    
-
-    
-    
     
     
     @IBAction func login(_ sender: Any) {
@@ -34,8 +29,10 @@ class LoginController : UIViewController{
                        else {
                            return
                        }
-                
-                self?.show(vc, sender: true)
+                vc.modalPresentationStyle = .fullScreen
+            //self?.navigationController?.
+                self?.present(vc, animated: true)
+               // self?.show(vc, sender: true)
             } else{
                 let errCode = AuthErrorCode(rawValue: error!._code)
                 switch errCode {

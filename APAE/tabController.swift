@@ -13,6 +13,17 @@ class tabController: UITabBarController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        notificationPermission()
     }
-
+    func notificationPermission() {
+            let notificationCenter = UNUserNotificationCenter.current()
+            notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if let error = error {
+                // Handle the error here.
+                print(error)
+            }
+            // Enable or disable features based on the authorization.
+            print(granted)
+        }
+    }
 }

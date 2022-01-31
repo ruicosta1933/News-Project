@@ -20,6 +20,7 @@ class LoginController : UIViewController{
         
     }
     
+
     
     
     
@@ -38,6 +39,10 @@ class LoginController : UIViewController{
             } else{
                 let errCode = AuthErrorCode(rawValue: error!._code)
                 switch errCode {
+                case .missingEmail:
+                    let alerta = UIAlertController(title: "Email em Falta", message: "O email encontra-se em falta", preferredStyle: .alert)
+                    alerta.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+                    self?.present(alerta, animated: true, completion: nil)
                 case .invalidEmail:
                     let alerta = UIAlertController(title: "Email Invalido", message: "O email é invalido", preferredStyle: .alert)
                     alerta.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))

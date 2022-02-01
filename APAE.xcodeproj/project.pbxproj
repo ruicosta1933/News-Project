@@ -33,7 +33,11 @@
 		B29041BD27A1AADC00EF465A /* CacheController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29041BC27A1AADC00EF465A /* CacheController.swift */; };
 		B29041BF27A1EF7800EF465A /* QRController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29041BE27A1EF7800EF465A /* QRController.swift */; };
 		B29EF99F27A8513A0090FCE0 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29EF99E27A8513A0090FCE0 /* NotificationController.swift */; };
+		B29EF9A127A985910090FCE0 /* FavouritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29EF9A027A985910090FCE0 /* FavouritesController.swift */; };
+		B29EF9A327A9F09F0090FCE0 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29EF9A227A9F09F0090FCE0 /* CommentsTableViewCell.swift */; };
 		B2CF08F527A372BD00771BF3 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CF08F427A372BD00771BF3 /* NewsTableViewCell.swift */; };
+		B2D6AA6927A9F627009867BD /* commentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D6AA6827A9F627009867BD /* commentModel.swift */; };
+		B2D6AA6B27A9FD40009867BD /* QRScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D6AA6A27A9FD40009867BD /* QRScannerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,7 +85,11 @@
 		B29041BC27A1AADC00EF465A /* CacheController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheController.swift; sourceTree = "<group>"; };
 		B29041BE27A1EF7800EF465A /* QRController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRController.swift; sourceTree = "<group>"; };
 		B29EF99E27A8513A0090FCE0 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		B29EF9A027A985910090FCE0 /* FavouritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesController.swift; sourceTree = "<group>"; };
+		B29EF9A227A9F09F0090FCE0 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		B2CF08F427A372BD00771BF3 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		B2D6AA6827A9F627009867BD /* commentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentModel.swift; sourceTree = "<group>"; };
+		B2D6AA6A27A9FD40009867BD /* QRScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +165,10 @@
 				B24F4EC327A5C0EC00176636 /* RecoverPasswordController.swift */,
 				B237215127A7463D002D42E0 /* ProfileController.swift */,
 				B29EF99E27A8513A0090FCE0 /* NotificationController.swift */,
+				B29EF9A027A985910090FCE0 /* FavouritesController.swift */,
+				B29EF9A227A9F09F0090FCE0 /* CommentsTableViewCell.swift */,
+				B2D6AA6827A9F627009867BD /* commentModel.swift */,
+				B2D6AA6A27A9FD40009867BD /* QRScannerController.swift */,
 			);
 			path = APAE;
 			sourceTree = "<group>";
@@ -343,12 +355,16 @@
 				B248A718278F34510030DAB3 /* BlogTableViewCell.swift in Sources */,
 				B237215227A7463D002D42E0 /* ProfileController.swift in Sources */,
 				B24F4EC227A5B6DD00176636 /* tabController.swift in Sources */,
+				B29EF9A327A9F09F0090FCE0 /* CommentsTableViewCell.swift in Sources */,
 				B207E6E92770CEE5007C1870 /* AppDelegate.swift in Sources */,
 				B24F4EC427A5C0EC00176636 /* RecoverPasswordController.swift in Sources */,
 				B2767955278377A700E05DBF /* UINews.swift in Sources */,
 				B29EF99F27A8513A0090FCE0 /* NotificationController.swift in Sources */,
 				B24F4EBE27A5906900176636 /* RegisterController.swift in Sources */,
 				B29041BD27A1AADC00EF465A /* CacheController.swift in Sources */,
+				B29EF9A127A985910090FCE0 /* FavouritesController.swift in Sources */,
+				B2D6AA6B27A9FD40009867BD /* QRScannerController.swift in Sources */,
+				B2D6AA6927A9F627009867BD /* commentModel.swift in Sources */,
 				B207E6EB2770CEE5007C1870 /* SceneDelegate.swift in Sources */,
 				B207E7192770D064007C1870 /* APICaller.swift in Sources */,
 			);

@@ -18,6 +18,8 @@
 		B207E70C2770CEE8007C1870 /* APAEUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B207E70B2770CEE8007C1870 /* APAEUITestsLaunchTests.swift */; };
 		B207E7192770D064007C1870 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B207E7182770D064007C1870 /* APICaller.swift */; };
 		B2339B6D27AB5AD500FBDFC0 /* FavouritesViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2339B6C27AB5AD400FBDFC0 /* FavouritesViewCell.swift */; };
+		B2339B6F27AB614400FBDFC0 /* QrCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2339B6E27AB614400FBDFC0 /* QrCodeScannerViewController.swift */; };
+		B2339B7127AB6F4800FBDFC0 /* qrcode.png in Resources */ = {isa = PBXBuildFile; fileRef = B2339B7027AB6F4800FBDFC0 /* qrcode.png */; };
 		B237215227A7463D002D42E0 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B237215127A7463D002D42E0 /* ProfileController.swift */; };
 		B23F09342798798A00FF4810 /* NewsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23F09332798798A00FF4810 /* NewsDetailsViewController.swift */; };
 		B2481B33279B04B800397544 /* modalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2481B32279B04B800397544 /* modalController.swift */; };
@@ -38,7 +40,6 @@
 		B29EF9A327A9F09F0090FCE0 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B29EF9A227A9F09F0090FCE0 /* CommentsTableViewCell.swift */; };
 		B2CF08F527A372BD00771BF3 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2CF08F427A372BD00771BF3 /* NewsTableViewCell.swift */; };
 		B2D6AA6927A9F627009867BD /* commentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D6AA6827A9F627009867BD /* commentModel.swift */; };
-		B2D6AA6B27A9FD40009867BD /* QRScannerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D6AA6A27A9FD40009867BD /* QRScannerController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,8 @@
 		B207E70B2770CEE8007C1870 /* APAEUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APAEUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B207E7182770D064007C1870 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 		B2339B6C27AB5AD400FBDFC0 /* FavouritesViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewCell.swift; sourceTree = "<group>"; };
+		B2339B6E27AB614400FBDFC0 /* QrCodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeScannerViewController.swift; sourceTree = "<group>"; };
+		B2339B7027AB6F4800FBDFC0 /* qrcode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qrcode.png; sourceTree = "<group>"; };
 		B237215127A7463D002D42E0 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		B23F09332798798A00FF4810 /* NewsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailsViewController.swift; sourceTree = "<group>"; };
 		B2481B32279B04B800397544 /* modalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = modalController.swift; sourceTree = "<group>"; };
@@ -91,7 +94,6 @@
 		B29EF9A227A9F09F0090FCE0 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		B2CF08F427A372BD00771BF3 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		B2D6AA6827A9F627009867BD /* commentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentModel.swift; sourceTree = "<group>"; };
-		B2D6AA6A27A9FD40009867BD /* QRScannerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				B23F09332798798A00FF4810 /* NewsDetailsViewController.swift */,
 				B2481B32279B04B800397544 /* modalController.swift */,
 				B29041BC27A1AADC00EF465A /* CacheController.swift */,
+				B2339B7027AB6F4800FBDFC0 /* qrcode.png */,
 				B29041BE27A1EF7800EF465A /* QRController.swift */,
 				B24F4EBD27A5906900176636 /* RegisterController.swift */,
 				B24F4EBF27A5907800176636 /* LoginController.swift */,
@@ -170,8 +173,8 @@
 				B29EF9A027A985910090FCE0 /* FavouritesController.swift */,
 				B29EF9A227A9F09F0090FCE0 /* CommentsTableViewCell.swift */,
 				B2D6AA6827A9F627009867BD /* commentModel.swift */,
-				B2D6AA6A27A9FD40009867BD /* QRScannerController.swift */,
 				B2339B6C27AB5AD400FBDFC0 /* FavouritesViewCell.swift */,
+				B2339B6E27AB614400FBDFC0 /* QrCodeScannerViewController.swift */,
 			);
 			path = APAE;
 			sourceTree = "<group>";
@@ -323,6 +326,7 @@
 			files = (
 				B207E6F52770CEE7007C1870 /* LaunchScreen.storyboard in Resources */,
 				B26D5BA02795B7B500A81C58 /* GoogleService-Info.plist in Resources */,
+				B2339B7127AB6F4800FBDFC0 /* qrcode.png in Resources */,
 				B207E6F22770CEE7007C1870 /* Assets.xcassets in Resources */,
 				B207E6F02770CEE5007C1870 /* Main.storyboard in Resources */,
 			);
@@ -350,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B23F09342798798A00FF4810 /* NewsDetailsViewController.swift in Sources */,
+				B2339B6F27AB614400FBDFC0 /* QrCodeScannerViewController.swift in Sources */,
 				B207E6ED2770CEE5007C1870 /* ViewController.swift in Sources */,
 				B2CF08F527A372BD00771BF3 /* NewsTableViewCell.swift in Sources */,
 				B24F4EC027A5907800176636 /* LoginController.swift in Sources */,
@@ -366,7 +371,6 @@
 				B24F4EBE27A5906900176636 /* RegisterController.swift in Sources */,
 				B29041BD27A1AADC00EF465A /* CacheController.swift in Sources */,
 				B29EF9A127A985910090FCE0 /* FavouritesController.swift in Sources */,
-				B2D6AA6B27A9FD40009867BD /* QRScannerController.swift in Sources */,
 				B2D6AA6927A9F627009867BD /* commentModel.swift in Sources */,
 				B207E6EB2770CEE5007C1870 /* SceneDelegate.swift in Sources */,
 				B2339B6D27AB5AD500FBDFC0 /* FavouritesViewCell.swift in Sources */,

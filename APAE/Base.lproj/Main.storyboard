@@ -501,8 +501,8 @@
                         <segue destination="Yej-iF-hX6" kind="relationship" relationship="viewControllers" id="l5v-mk-160"/>
                         <segue destination="iwl-Oj-X7R" kind="relationship" relationship="viewControllers" id="kdo-xv-FNc"/>
                         <segue destination="KWK-dd-kfV" kind="relationship" relationship="viewControllers" id="UON-VZ-m21"/>
-                        <segue destination="aff-sR-b6k" kind="relationship" relationship="viewControllers" id="8mZ-zc-jyU"/>
-                        <segue destination="gP2-eH-d8w" kind="relationship" relationship="viewControllers" id="MmQ-sh-ypY"/>
+                        <segue destination="hfV-sn-1tr" kind="relationship" relationship="viewControllers" id="PQm-hD-ELO"/>
+                        <segue destination="gP2-eH-d8w" kind="relationship" relationship="viewControllers" id="RrR-om-Fu0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsF-Pk-5kN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -524,9 +524,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Jt-8D-huy">
-                                <rect key="frame" x="182.5" y="432.5" width="49" height="31"/>
+                                <rect key="frame" x="151.5" y="432.5" width="111" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Sair"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Sair da Conta"/>
                                 <connections>
                                     <action selector="logOut:" destination="gP2-eH-d8w" eventType="touchUpInside" id="HV4-tG-efO"/>
                                 </connections>
@@ -551,21 +551,21 @@
             </objects>
             <point key="canvasLocation" x="-715" y="851"/>
         </scene>
-        <!--Favoritos-->
-        <scene sceneID="wgb-Bk-mjW">
+        <!--Favourite-->
+        <scene sceneID="pCa-7J-oT8">
             <objects>
-                <viewController storyboardIdentifier="FavouritesController" id="aff-sR-b6k" customClass="FavouritesController" customModule="APAE" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="r9P-vg-tKl">
+                <viewController title="Favourite" id="nHh-Vi-wPj" customClass="FavouritesController" customModule="APAE" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="buz-lE-Smu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="zDE-dz-7hO"/>
+                        <viewLayoutGuide key="safeArea" id="yii-NQ-pv4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favoritos" selectedImage="heart" catalog="system" id="Id8-L2-o2E"/>
+                    <navigationItem key="navigationItem" id="VBV-Ax-mMO"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9TR-09-WqC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TsS-aX-de1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="19" y="1509"/>
+            <point key="canvasLocation" x="928.98550724637687" y="1543.5267857142856"/>
         </scene>
         <!--Blog APAE-->
         <scene sceneID="McO-k1-Ehh">
@@ -663,11 +663,19 @@
                                                 <rect key="frame" x="5" y="445.5" width="404" height="31"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Comentários" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9R2-Hv-vHD">
-                                                        <rect key="frame" x="0.0" y="0.0" width="348" height="31"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="302.5" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bXz-kK-SeA">
+                                                        <rect key="frame" x="302.5" y="0.0" width="45.5" height="31"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" image="qrcode" catalog="system" title=""/>
+                                                        <connections>
+                                                            <action selector="showQR:" destination="rgy-Ve-v38" eventType="touchUpInside" id="OMf-fW-6no"/>
+                                                        </connections>
+                                                    </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Iw-Ns-Ije">
                                                         <rect key="frame" x="348" y="0.0" width="10.5" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -830,21 +838,45 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Db6-Jn-h3z">
                                             <rect key="frame" x="358" y="58.5" width="36" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" systemColor="systemGray2Color"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="btI-Li-uwd" firstAttribute="leading" secondItem="Ibr-6U-cyx" secondAttribute="leadingMargin" id="66y-7b-1m0"/>
                                         <constraint firstItem="8o5-Lm-aF2" firstAttribute="leading" secondItem="Ibr-6U-cyx" secondAttribute="leading" constant="20" symbolic="YES" id="6OS-cj-0gX"/>
-                                        <constraint firstItem="8o5-Lm-aF2" firstAttribute="top" secondItem="Db6-Jn-h3z" secondAttribute="bottom" constant="5" id="FYm-RL-D9M"/>
+                                        <constraint firstItem="8o5-Lm-aF2" firstAttribute="top" secondItem="Db6-Jn-h3z" secondAttribute="bottom" constant="10" id="FYm-RL-D9M"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="Db6-Jn-h3z" secondAttribute="trailing" id="FsM-z2-G6f"/>
                                         <constraint firstAttribute="trailing" secondItem="8o5-Lm-aF2" secondAttribute="trailing" constant="20" symbolic="YES" id="HK1-P3-oh5"/>
                                         <constraint firstItem="btI-Li-uwd" firstAttribute="top" secondItem="Ibr-6U-cyx" secondAttribute="topMargin" id="Kvh-6i-3FT"/>
                                         <constraint firstItem="Db6-Jn-h3z" firstAttribute="top" secondItem="Ibr-6U-cyx" secondAttribute="topMargin" id="R5d-N4-sc1"/>
                                         <constraint firstAttribute="bottom" secondItem="8o5-Lm-aF2" secondAttribute="bottom" id="XU4-Qq-vcf"/>
                                     </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                            <color key="value" systemColor="linkColor"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                            <integer key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
                                 </tableViewCellContentView>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" systemColor="linkColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="comment" destination="8o5-Lm-aF2" id="uVJ-Tg-nj2"/>
                                     <outlet property="date" destination="Db6-Jn-h3z" id="bLu-ez-tz5"/>
@@ -938,6 +970,25 @@
             </objects>
             <point key="canvasLocation" x="4243" y="-133"/>
         </scene>
+        <!--Favourites-->
+        <scene sceneID="Ax6-3G-Vn3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hfV-sn-1tr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favourites" image="heart" catalog="system" id="YkG-nV-UCe"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="e1p-CT-yIy">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nHh-Vi-wPj" kind="relationship" relationship="rootViewController" id="8ft-eA-bmJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ihc-5R-cnq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="1543.5267857142856"/>
+        </scene>
     </scenes>
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>
@@ -956,6 +1007,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

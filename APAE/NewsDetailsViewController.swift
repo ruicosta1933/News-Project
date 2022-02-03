@@ -42,15 +42,16 @@ static let identifier = "NewsDetailsViewController"
         
         super.viewDidLoad()
         
-        let button = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(openQRPage))
+        let button = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(shareNews))
         navigationItem.rightBarButtonItem = button
         
-        title = "Detail"
         titleLabel.text = article?.title
         subTitleLabel.text = article?.summary
         dateLabel.text = article?.publishedAt
         authorLabel.text = article?.newsSite
         likeButton.addTarget(self, action: #selector(pressed), for: .touchUpInside)
+        
+        view.backgroundColor = .systemBackground
         
         imageView.layer.cornerRadius = 6
         imageView.layer.masksToBounds = true
@@ -87,24 +88,23 @@ static let identifier = "NewsDetailsViewController"
 
                     if document.get("isFavourite") != nil {
                         self.isFavourite = document.get("isFavourite") as! Bool
+                        if(self.isFavourite == false){
+                            self.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                        }
+                        else{
+                            self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                        }
                     }
                 }
+    
         
-        if(isFavourite == false){
-            self.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-        }
-        else{
-            self.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        }
-        
-        view.backgroundColor = .systemBackground
         
     }
    
 
    
     
-    @objc func openQRPage() {
+    @objc func shareNews() {
         
         guard let image = UIImage(data: image!), let url = URL(string: (article?.url)!) else {
                     return
@@ -119,15 +119,17 @@ static let identifier = "NewsDetailsViewController"
         
                 present(shareSheetvc, animated: true)
      
-      /*  guard let vc = storyboard?.instantiateViewController(withIdentifier: "QRController") as? QRController
-               else {
-                   return
-               }
-               
-               vc.articleURL = article?.url ?? ""
-               
-               navigationController?.present(vc, animated: true)
-        */
+    }
+    
+    @IBAction func showQR(_ sender: Any) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "QRController") as? QRController
+                else {
+                    return
+                }
+                
+                vc.articleURL = article?.url ?? ""
+                
+                navigationController?.present(vc, animated: true)
     }
     
     @objc func pressed() {

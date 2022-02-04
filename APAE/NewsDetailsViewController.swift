@@ -154,10 +154,6 @@ static let identifier = "NewsDetailsViewController"
                         }
                     }
                 } else if isFavourite == false{
-                    
-                    
-                    
-                    
                     db.collection("likedByUser").document(String(describing: userId!)).collection("news").document(docId).setData([
                         "isFavourite": true,
                     ], merge: true)

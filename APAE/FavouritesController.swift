@@ -48,17 +48,21 @@ class FavouritesController: UIViewController, UITableViewDelegate, UITableViewDa
                          case .failure(let error):
                              print(error)
                          }
-                        print("\(document.documentID) => \(document.data())")
                     }
                 }
             }
     }
+        
+        
+       
+        
+        
+        
         tableView.dataSource = self
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("aqui")
         return tableViewData.count
     }
  
@@ -91,39 +95,46 @@ class FavouritesController: UIViewController, UITableViewDelegate, UITableViewDa
             }.resume()
             
         }
+  
          
         return cell!
         
     }
-    
-selectcell
-    
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "NewsDetailsViewController") as? NewsDetailsViewController
+          else{
+              return
+          }
+          
+          if let url = self.tableViewData[indexPath.row].imageURL {
+              
+              URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+                  guard let data = data, error == nil else{
+                      return
+                  }
+              
+                  DispatchQueue.main.async {
+                      vc.image = data
+                  }
+              }.resume()
+              
+          }
+          
+          vc.article = self.articles[indexPath.row]
+          
+            navigationController?.pushViewController(vc, animated: true)
+    }
+
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-      guard let vc = storyboard?.instantiateViewController(withIdentifier: "NewsDetailsViewController") as? NewsDetailsViewController
-        else{
-            return
+        if let cell = tableView.cellForRow(at: indexPath){
+            if cell.isSelected{
+               
+            }
         }
-        
-        if let url = self.tableViewData[indexPath.row].imageURL {
-            
-            URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-                guard let data = data, error == nil else{
-                    return
-                }
-            
-                DispatchQueue.main.async {
-                    vc.image = data
-                }
-            }.resume()
-            
-        }
-        
-        vc.article = self.articles[indexPath.row]
-        
-          navigationController?.pushViewController(vc, animated: true)
         
     }
     

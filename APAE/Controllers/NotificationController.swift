@@ -20,7 +20,7 @@ class NotificationController {
         content.title = "Novo Artigo Publicado."
         content.body = "Leia ja a nova noticia !"
         
-        let date = Date().addingTimeInterval(10)
+        let date = Date().addingTimeInterval(5)
         
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
         

@@ -21,6 +21,8 @@ class FavouritesController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         title = "Favourites"
         let id = Auth.auth().currentUser?.uid
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
         
         db.collection("likedByUser").document(id!).collection("news").whereField("isFavourite", isEqualTo: true)
             .getDocuments(){ (QuerySnapshot, err) in
@@ -55,6 +57,12 @@ class FavouritesController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
     }
     
+    @objc func handleRefreshControl(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) {
+            tableViewData.removeAll()
+            viewDidLoad()
+
+            self.tableView.refreshControl?.endRefreshing()
+        }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableViewData.count

@@ -156,28 +156,10 @@
 				B207E6F12770CEE7007C1870 /* Assets.xcassets */,
 				B207E6F32770CEE7007C1870 /* LaunchScreen.storyboard */,
 				B207E6F62770CEE7007C1870 /* Info.plist */,
-				B2CF08F427A372BD00771BF3 /* NewsTableViewCell.swift */,
 				B207E7182770D064007C1870 /* APICaller.swift */,
 				B2CF08F627A3735300771BF3 /* Models */,
 				B248A714278F2C730030DAB3 /* Controllers */,
-				B248A717278F34510030DAB3 /* BlogTableViewCell.swift */,
-				B23F09332798798A00FF4810 /* NewsDetailsViewController.swift */,
-				B2481B32279B04B800397544 /* modalController.swift */,
-				B29041BC27A1AADC00EF465A /* CacheController.swift */,
 				B2339B7027AB6F4800FBDFC0 /* qrcode.png */,
-				B29041BE27A1EF7800EF465A /* QRController.swift */,
-				B24F4EBD27A5906900176636 /* RegisterController.swift */,
-				B24F4EBF27A5907800176636 /* LoginController.swift */,
-				B24F4EC127A5B6DD00176636 /* tabController.swift */,
-				B24F4EC327A5C0EC00176636 /* RecoverPasswordController.swift */,
-				B237215127A7463D002D42E0 /* ProfileController.swift */,
-				B29EF99E27A8513A0090FCE0 /* NotificationController.swift */,
-				B29EF9A027A985910090FCE0 /* FavouritesController.swift */,
-				B29EF9A227A9F09F0090FCE0 /* CommentsTableViewCell.swift */,
-				B2D6AA6827A9F627009867BD /* commentModel.swift */,
-				B2339B6C27AB5AD400FBDFC0 /* FavouritesViewCell.swift */,
-				B2339B6E27AB614400FBDFC0 /* QrCodeScannerViewController.swift */,
-				B258595427AC8EED00273B6F /* favouriteModel.swift */,
 			);
 			path = APAE;
 			sourceTree = "<group>";
@@ -199,11 +181,47 @@
 			path = APAEUITests;
 			sourceTree = "<group>";
 		};
-		B248A714278F2C730030DAB3 /* Controllers */ = {
+		B2488FDE27AEFCB4001FB1A5 /* News */ = {
 			isa = PBXGroup;
 			children = (
 				B2767954278377A700E05DBF /* UINews.swift */,
 				B207E6EC2770CEE5007C1870 /* ViewController.swift */,
+				B23F09332798798A00FF4810 /* NewsDetailsViewController.swift */,
+				B24F4EC127A5B6DD00176636 /* tabController.swift */,
+				B2481B32279B04B800397544 /* modalController.swift */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		B2488FDF27AEFCD4001FB1A5 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				B24F4EBD27A5906900176636 /* RegisterController.swift */,
+				B24F4EBF27A5907800176636 /* LoginController.swift */,
+				B24F4EC327A5C0EC00176636 /* RecoverPasswordController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		B2488FE027AEFD31001FB1A5 /* QR Code */ = {
+			isa = PBXGroup;
+			children = (
+				B2339B6E27AB614400FBDFC0 /* QrCodeScannerViewController.swift */,
+				B29041BE27A1EF7800EF465A /* QRController.swift */,
+			);
+			path = "QR Code";
+			sourceTree = "<group>";
+		};
+		B248A714278F2C730030DAB3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B237215127A7463D002D42E0 /* ProfileController.swift */,
+				B29041BC27A1AADC00EF465A /* CacheController.swift */,
+				B29EF99E27A8513A0090FCE0 /* NotificationController.swift */,
+				B29EF9A027A985910090FCE0 /* FavouritesController.swift */,
+				B2488FE027AEFD31001FB1A5 /* QR Code */,
+				B2488FDF27AEFCD4001FB1A5 /* Auth */,
+				B2488FDE27AEFCB4001FB1A5 /* News */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -211,6 +229,12 @@
 		B2CF08F627A3735300771BF3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B2CF08F427A372BD00771BF3 /* NewsTableViewCell.swift */,
+				B29EF9A227A9F09F0090FCE0 /* CommentsTableViewCell.swift */,
+				B2339B6C27AB5AD400FBDFC0 /* FavouritesViewCell.swift */,
+				B2D6AA6827A9F627009867BD /* commentModel.swift */,
+				B258595427AC8EED00273B6F /* favouriteModel.swift */,
+				B248A717278F34510030DAB3 /* BlogTableViewCell.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

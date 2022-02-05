@@ -96,9 +96,6 @@ static let identifier = "NewsDetailsViewController"
                         }
                     }
                 }
-    
-        
-        
     }
    
 

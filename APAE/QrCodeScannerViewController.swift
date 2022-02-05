@@ -54,7 +54,7 @@ class QrCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObje
                 if object.type == AVMetadataObject.ObjectType.qr{
                     let url = URL(string: object.stringValue!)
                     
-                    let alert = UIAlertController(title: "QRcode", message: "Deseja abrir a noticia ?", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "QR APAE", message: "Deseja abrir a noticia ?", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Abrir", style: .default, handler: { (nil) in
                         let vc = SFSafariViewController(url: url!)
                         self.present(vc, animated: true)

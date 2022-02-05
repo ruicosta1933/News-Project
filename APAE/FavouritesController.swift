@@ -52,12 +52,6 @@ class FavouritesController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
     }
-        
-        
-       
-        
-        
-        
         tableView.dataSource = self
     }
     
@@ -95,10 +89,7 @@ class FavouritesController: UIViewController, UITableViewDelegate, UITableViewDa
             }.resume()
             
         }
-  
-         
         return cell!
-        
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

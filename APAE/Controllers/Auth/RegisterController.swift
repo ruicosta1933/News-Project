@@ -24,7 +24,7 @@ class RegisterController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboardWhenTappedAround() 
     }
     @IBAction func registerAccount(_ sender: Any) {
         Auth.auth().createUser(withEmail: email.text!, password: password.text!) { authResult, error in

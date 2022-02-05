@@ -41,7 +41,7 @@ static let identifier = "NewsDetailsViewController"
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+        self.hideKeyboardWhenTappedAround() 
         let button = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(shareNews))
         navigationItem.rightBarButtonItem = button
         

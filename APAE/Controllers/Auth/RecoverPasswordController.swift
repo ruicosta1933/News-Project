@@ -14,6 +14,7 @@ class RecoverPasswordController: UIViewController{
     @IBOutlet var email: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround() 
     }
     @IBAction func recoverPassword(_ sender: Any) {
         Auth.auth().sendPasswordReset(withEmail: email.text!) { error in

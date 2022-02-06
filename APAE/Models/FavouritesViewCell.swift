@@ -10,7 +10,7 @@ import UIKit
 
 class FavouritesViewCell: UITableViewCell {
     
-    
+    //Cell with the outlets of the storyboard
     @IBOutlet var newsImage: UIImageView!
     @IBOutlet var title: UILabel!
     @IBOutlet var date: UILabel!

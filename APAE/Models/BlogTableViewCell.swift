@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// Model of a blog similar to the news
 class BlogTableViewCellViewModel {
     let title : String
     let summary : String
@@ -14,7 +14,7 @@ class BlogTableViewCellViewModel {
     var imageData: Data? = nil
     var newsSite: String?
     var publishedAt: String?
-    
+    //initialize the variables
     init(
         title : String,
         summary : String,
@@ -29,12 +29,12 @@ class BlogTableViewCellViewModel {
         self.publishedAt = publishedAt
     }
 }
-
+//Cell configuration
 class BlogTableViewCell: UITableViewCell {
     
 static let identifier = "BlogTableViewCell"
     
-    
+    //COnfiguration of the labels all design
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
@@ -71,6 +71,7 @@ static let identifier = "BlogTableViewCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        //Complete the view with the labels
         contentView.addSubview(newsTitleLabel)
         contentView.addSubview(subTitleLabel)
         contentView.addSubview(newsImageView)
@@ -85,7 +86,7 @@ static let identifier = "BlogTableViewCell"
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        // All the form of each label
         newsTitleLabel.frame=CGRect(
             x: 5,
             y: 5,
@@ -125,13 +126,14 @@ static let identifier = "BlogTableViewCell"
    
     override func prepareForReuse() {
          super.prepareForReuse()
+        //Giving nil value for the labels
         newsTitleLabel.text = nil
         subTitleLabel.text = nil
         newsImageView.image = nil
         authorLabel.text = nil
         publishedAtLabel.text = nil
     }
-    
+    //Function that automatize the completion of the lable's values
     func configure(with viewModel : BlogTableViewCellViewModel ){
         newsTitleLabel.text = viewModel.title
         subTitleLabel.text = viewModel.summary

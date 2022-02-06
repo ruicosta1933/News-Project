@@ -8,7 +8,7 @@
 import UIKit
 
 class CommentsTableViewCell: UITableViewCell {
-
+//Cell with the outlets of the storyboard
     @IBOutlet var name: UILabel!
     @IBOutlet var comment: UILabel!
     @IBOutlet var date: UILabel!

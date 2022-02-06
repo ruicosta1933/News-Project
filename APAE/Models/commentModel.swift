@@ -8,6 +8,7 @@
 import Foundation
 
 struct CommentsModel: Codable {
+    //Model of a comment in this app
     let user: String
     let comment: String
     let date: String

@@ -7,6 +7,7 @@
 
 import Foundation
 struct FavouriteModel: Codable {
+    //Model of a favourite in this app very similar to a news model
        let id: Int
        let title: String
        let imageURL: URL?

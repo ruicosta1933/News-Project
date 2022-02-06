@@ -7,6 +7,7 @@
 
 import UIKit
 
+// Model of a news
 class NewsTableViewCellViewModel {
     let id : Int
     let title : String
@@ -14,7 +15,7 @@ class NewsTableViewCellViewModel {
     var imageData: Data? = nil
     var newsSite: String?
     var publishedAt: String?
-    
+    //initialize the variables
     init(
         id : Int,
         title : String,
@@ -30,11 +31,12 @@ class NewsTableViewCellViewModel {
     }
 }
 
+//Cell configuration
 class NewsTableViewCell: UITableViewCell {
     
 static let identifier = "NewsTableViewCell"
     
-    
+    //COnfiguration of the labels all design
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 2
@@ -65,6 +67,7 @@ static let identifier = "NewsTableViewCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        //Complete the view with the labels
         contentView.addSubview(newsTitleLabel)
         contentView.addSubview(newsImageView)
         contentView.addSubview(authorLabel)
@@ -78,7 +81,7 @@ static let identifier = "NewsTableViewCell"
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        // All the form of each label
         newsTitleLabel.frame=CGRect(
             x: 5,
             y: 5,
@@ -107,13 +110,15 @@ static let identifier = "NewsTableViewCell"
    
     override func prepareForReuse() {
          super.prepareForReuse()
+        //Giving nil value for the labels
         newsTitleLabel.text = nil
         newsImageView.image = nil
         authorLabel.text = nil
         publishedAtLabel.text = nil
     }
-    
+    //Function that automatize the completion of the lable's values
     func configure(with viewModel : NewsTableViewCellViewModel ){
+        
         newsTitleLabel.text = viewModel.title
         authorLabel.text = viewModel.newsSite
         publishedAtLabel.text = viewModel.publishedAt

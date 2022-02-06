@@ -21,7 +21,6 @@ class CacheController {
                 completion(article)
             }
         } else {
-            
             NotificationController.shared.notification()
             
             let cachedArticles = self.cache.object(forKey: "Articles") as! [Article]

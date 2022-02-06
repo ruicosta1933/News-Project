@@ -21,7 +21,6 @@ class ProfileController : UIViewController {
         email.text = auth?.displayName
         
     }
-    
     @IBAction func logOut(_ sender: Any) {
         do{
             try Auth.auth().signOut()

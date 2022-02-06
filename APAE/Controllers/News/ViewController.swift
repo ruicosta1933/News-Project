@@ -117,15 +117,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
           navigationController?.pushViewController(vc, animated: true)
         
         
-    /*
-        let article = articles[indexPath.row]
-        
-        guard let url = URL (string: article.url ?? "") else {
-            return
-        }
-        let vc = SFSafariViewController(url: url)
-        present(vc, animated: true)*/
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -24,13 +24,16 @@ class FavouritesController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
         
+        
+        //Query to the likes of the user that is currently logged in
         db.collection("likedByUser").document(id!).collection("news").whereField("isFavourite", isEqualTo: true)
             .getDocuments(){ (QuerySnapshot, err) in
-                if let err = err {
+                if err != nil {
                     print("Error")
                 }
                 else {
                     for document in QuerySnapshot!.documents {
+        //API Fetch to get the articles by id
                 APICaller.shared.getById(with: document.documentID){ [weak self] result in
                          switch result {
                          case .success(let articles):
@@ -58,6 +61,7 @@ class FavouritesController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @objc func handleRefreshControl(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) {
+        //Clear the ViewData so that it doesn't accumulate articles
             tableViewData.removeAll()
             viewDidLoad()
 
@@ -69,8 +73,10 @@ class FavouritesController: UIViewController, UITableViewDelegate, UITableViewDa
     }
  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //Get the cell outlets from the StoryBoard
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavouriteCell", for: indexPath) as? FavouritesViewCell
         
+        //Complete the outlets with information and design
         cell?.title.numberOfLines = 2
         cell?.title.font = .systemFont(ofSize: 22, weight: .semibold)
         cell?.title.text = self.tableViewData[indexPath.row].title
@@ -79,6 +85,7 @@ class FavouritesController: UIViewController, UITableViewDelegate, UITableViewDa
         cell?.author.font = .systemFont(ofSize: 17, weight: .thin)
         cell?.author.text = self.tableViewData[indexPath.row].newsSite
         
+        //Treatment of the image because it comes as an URL
         if let url = self.tableViewData[indexPath.row].imageURL {
             
             URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
@@ -87,6 +94,7 @@ class FavouritesController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             
                 DispatchQueue.main.async {
+                    //Design & Atribute image data
                     cell?.newsImage.layer.cornerRadius = 6
                     cell?.newsImage.layer.masksToBounds = true
                     cell?.newsImage.clipsToBounds = true
@@ -100,58 +108,4 @@ class FavouritesController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell!
     }
 
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "NewsDetailsViewController") as? NewsDetailsViewController
-          else{
-              return
-          }
-          
-          if let url = self.tableViewData[indexPath.row].imageURL {
-              
-              URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
-                  guard let data = data, error == nil else{
-                      return
-                  }
-              
-                  DispatchQueue.main.async {
-                      vc.image = data
-                  }
-              }.resume()
-              
-          }
-          
-          vc.article = self.articles[indexPath.row]
-          
-            navigationController?.pushViewController(vc, animated: true)
-    }
-
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        if let cell = tableView.cellForRow(at: indexPath){
-            if cell.isSelected{
-               
-            }
-        }
-        
-    }
-    
-    /* func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-     
-       
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-      guard let vc = storyboard?.instantiateViewController(withIdentifier: "NewsDetailsViewController") as? NewsDetailsViewController
-        else{
-            return
-        }
-        
-        vc.article = articles[indexPath.row]
-        vc.image = viewModels!.imageData
-        
-          navigationController?.pushViewController(vc, animated: true)
-        
-    }*/
-    
 }

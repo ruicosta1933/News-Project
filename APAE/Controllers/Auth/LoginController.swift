@@ -17,32 +17,28 @@ class LoginController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Function to hide the keyboard when tapped away from it
         self.hideKeyboardWhenTappedAround()
         
     }
-    
-    
-    
-        
-       
-    
-    
+
     @IBAction func login(_ sender: Any) {
+        //Validate user info, if exists and if its correct
         Auth.auth().signIn(withEmail: email.text!, password: password.text!) { [weak self] authResult, error in
           guard let strongSelf = self else { return }
+            
             if (error?._code == nil) {
-                let user = Auth.auth().currentUser
+                
                 guard let vc = self?.storyboard?.instantiateViewController(withIdentifier: "tabController") as? tabController
                        else {
                            return
                        }
                 vc.modalPresentationStyle = .fullScreen
-            //self?.navigationController?.
                 self?.present(vc, animated: true)
-               // self?.show(vc, sender: true)
             } else{
                 let errCode = AuthErrorCode(rawValue: error!._code)
                 switch errCode {
+                    //Error treatment for the info written by the user
                 case .missingEmail:
                     let alerta = UIAlertController(title: "Email em Falta", message: "O email encontra-se em falta", preferredStyle: .alert)
                     alerta.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))

@@ -41,9 +41,13 @@ static let identifier = "NewsDetailsViewController"
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        //Function to hide the keyboard when tapped away from it
         self.hideKeyboardWhenTappedAround() 
         let button = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(shareNews))
         navigationItem.rightBarButtonItem = button
+        
+        //Aspect of the layers
         
         titleLabel.text = article?.title
         subTitleLabel.text = article?.summary
@@ -67,18 +71,19 @@ static let identifier = "NewsDetailsViewController"
         let uId = Auth.auth().currentUser!.uid
         let docId = String(article!.id)
         
+        
+        //Get the counts of the likes of the exact news that is being displayed
         db.collection("likes").document(docId)
             .addSnapshotListener { documentSnapshot, error in
                 guard let document = documentSnapshot else {
                     print("Error fetching document: \(error!)")
                     return
                 }
-//                let source = document.metadata.hasPendingWrites ? "Local" : "Server"
                 self.likesCount.text = String(describing: document.get("no_likes") ?? "0")
             }
         
         
-        
+        //Verifies if the current user as already liked and fill the heart button
         db.collection("likedByUser").document(String(describing: uId)).collection("news").document(docId)
                     .addSnapshotListener { documentSnapshot, error in
                     guard let document = documentSnapshot else {
@@ -106,6 +111,7 @@ static let identifier = "NewsDetailsViewController"
         guard let image = UIImage(data: image!), let url = URL(string: (article?.url)!) else {
                     return
                 }
+        //Share info modal
                 let shareSheetvc = UIActivityViewController(
                     activityItems: [
                         image,
@@ -123,21 +129,17 @@ static let identifier = "NewsDetailsViewController"
                 else {
                     return
                 }
-                
+                //Atribute the article url to the QRController initializer
                 vc.articleURL = article?.url ?? ""
                 
                 navigationController?.present(vc, animated: true)
     }
-    
+    //Like function
     @objc func pressed() {
-        
-        
-        
-        
         let docId = String(article!.id)
                 let userId = Auth.auth().currentUser?.uid
                 
-        
+        //Handle the favourite field if its already liked or not
                 if isFavourite == true {
                     db.collection("likedByUser").document(String(describing: userId!)).collection("news").document(docId).setData([
                         "isFavourite": false,
@@ -165,6 +167,7 @@ static let identifier = "NewsDetailsViewController"
                 }
         
         
+        //Button animation when pressed
         
         UIView.animate(withDuration: 0.4,
             animations: {
@@ -185,7 +188,7 @@ static let identifier = "NewsDetailsViewController"
         
     
     }
-    
+    //Modal to show the comments of current news
     @IBAction func showComments(_ sender: Any) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "modalController") as? modalController
                else {
@@ -196,15 +199,19 @@ static let identifier = "NewsDetailsViewController"
                
                navigationController?.present(vc, animated: true)
     }
+    
+    
     @IBAction func comment(_ sender: Any) {
         let docId = String(article!.id)
         let user = Auth.auth().currentUser
-        
+        //Add comment to the database
         db.collection("comments").document(docId).collection("comment").addDocument(data: [
                     "comment": commentField.text,
                     "user": user?.displayName,
                     "timestamp": FieldValue.serverTimestamp()
                 ])
+        
+        //Alert the user that the comment its already submitted
         let alerta = UIAlertController(title: "Sucesso", message: "O seu comentário foi enviado com sucesso", preferredStyle: .alert)
         alerta.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
         self.present(alerta, animated: true, completion: nil)

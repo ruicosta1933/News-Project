@@ -24,20 +24,26 @@ class RegisterController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Function to hide the keyboard when tapped away from it
         self.hideKeyboardWhenTappedAround() 
     }
+    
     @IBAction func registerAccount(_ sender: Any) {
+        
+        //Firebase Function to create and add the user info to the list of users in database
         Auth.auth().createUser(withEmail: email.text!, password: password.text!) { authResult, error in
            
             
             
             if (error?._code == nil) {
+                //Change variable used for the user to have a nickName in the app
                 let change = Auth.auth().currentUser?.createProfileChangeRequest()
                 change?.displayName = self.userName.text
                 change?.commitChanges { error in
                     print("algo errado")
                 }
-                let user = Auth.auth().currentUser
+                
                 
                 guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "tabController") as? tabController
                        else {
@@ -45,8 +51,10 @@ class RegisterController : UIViewController {
                        }
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true)
+                
             } else{
                 let errCode = AuthErrorCode(rawValue: error!._code)
+                //Error treatment for the info written by the user
                 switch errCode {
                     
                 case .invalidEmail:

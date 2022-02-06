@@ -32,7 +32,7 @@ class UINews: UIViewController, UITableViewDelegate, UITableViewDataSource, UISe
         tableView.dataSource = self
         view.backgroundColor = .systemBackground
         
-        
+        //Api fetch for the blogs
         APICaller.shared.getBlog{ [weak self] result in
                    switch result {
                    case .success(let articles):
@@ -54,9 +54,6 @@ class UINews: UIViewController, UITableViewDelegate, UITableViewDataSource, UISe
                        print(error)
                    }
                }
-        // Do any additional setup after loading the view.
-        
-        
     }
     
     
@@ -66,7 +63,6 @@ class UINews: UIViewController, UITableViewDelegate, UITableViewDataSource, UISe
         
         
     }
-    
     
     //Table
     
@@ -101,8 +97,6 @@ class UINews: UIViewController, UITableViewDelegate, UITableViewDataSource, UISe
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 400
     }
-    
-    //Search
 
 
 }

@@ -5,6 +5,9 @@ class CacheController {
     static let shared = CacheController()
     private var articles = [Article]()
 
+    
+    // Function that goes to the APICaller and get the articles
+    
     func setArticlesToCache(completion: @escaping (_ article: [Article]) -> ()) {
         APICaller.shared.getTopNews { [weak self] articles in
             self?.articles = articles
@@ -14,9 +17,11 @@ class CacheController {
            }
        }
     }
-
+    // Function that handle the Cache if it needs to be updated or not
     func getArticlesByCache(completion: @escaping (_ article: [Article]) -> ()) {
+        
         if self.cache.object(forKey: "Articles") == nil {
+            NotificationController.shared.notification()
             self.setArticlesToCache { article in
                 completion(article)
             }

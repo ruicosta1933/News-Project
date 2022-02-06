@@ -25,6 +25,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Function to hide the kwyboard when tapped away from it
         self.hideKeyboardWhenTappedAround() 
         title = "APAE"
         view.addSubview(tableView)
@@ -35,6 +36,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
         
+        //Get the Cache info of the articles
         CacheController.shared.getArticlesByCache{ [weak self] articles in
                        self?.articles = articles
                        self?.viewModels = articles.compactMap({
@@ -50,11 +52,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                            self?.tableView.reloadData()
                        }
                }
-        // Do any additional setup after loading the view.
         createSearchBar()
     }
     
     @objc func handleRefreshControl(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) {
+        //Get the Cache info of the articles
             CacheController.shared.getArticlesByCache { [weak self] articles in
                 self?.articles = articles
                 self?.viewModels = articles.compactMap({
@@ -123,7 +125,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 400
     }
     
-    //Search
+    //Search functions
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         viewDidLoad()
